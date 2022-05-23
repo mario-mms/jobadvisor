@@ -26,6 +26,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Publicar oferta</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -47,14 +48,14 @@
                 <label for="horario">Horario</label><br>
                 <input type="text" name="horario" id="horario" value="<?=$horario?>"><br>
                 <label for="salario">Salario</label><br>
-                <input type="number" name="salario" id="salario" value="<?=$salario?>"><br>
+                <input type="text" name="salario" id="salario" value="<?=$salario?>"><br>
                 <label for="duracion">Duración del contrato</label><br>
                 <input type="text" name="duracion" id="duracion" value="<?=$duracion?>"><br>
                 <label for="descripcion">Descripción del puesto</label><br>
                 <textarea name="descripcion" id="descripcion" cols="30" rows="10"><?=$descripcion?></textarea><br>
                 <label for="provincia">Provincia</label><br>
                 <select name="provincia" id="provincia" required>
-                    <option value="" disabled selected>Selecciona la Provincia</option>
+                    <option value="">Cargando...</option>
                 </select><br>
                 <input type="hidden" name="id_oferta" value="<?=$id_oferta?>">
                 <button type="submit">Publicar oferta</button>
@@ -76,6 +77,7 @@
             "dataType":"json"
         });
         peticion.done(function (data){
+            $("#provincia").html("<option value='all' selected>Selecciona la provincia</option>");
             for (let provincias of data.records){
                 let provincia=provincias.fields.texto;
                 $("#provincia").append(`<option value="${provincia}">${provincia}</option>`);

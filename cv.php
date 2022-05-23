@@ -37,14 +37,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Añade tu CV</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
         <a href="index.php"><img src="img/logopeq.png" alt="logo"></a>
         <div id="enlaces">
             <a href="ofertas.php">Buscar Ofertas</a>
-            <a href="buscarempresas.php">Mis opiniones</a>
-            <a href="publicar.php">Publicar opinión</a>
+            <a href="misopiniones.php">Mis opiniones</a>
+            <a href="buscarempresas.php">Buscar empresas</a>
             <a href="cv.php">MI CV</a>
             <a href="perfil.php">Perfil</a>
             <a href="cerrarsesion.php">Cerrar sesión</a>
@@ -61,11 +62,11 @@
                     <option value="">Cargando...</option>
                 </select><br>
                 <label for="titulación">Titulación</label><br>
-                <textarea name="titulacion" id="titulacion" cols="30" rows="10"><?=$titulacion?></textarea><br>
+                <textarea name="titulacion" id="titulacion" rows="6"><?=$titulacion?></textarea><br>
                 <label for="experiencia">Experiencia laboral</label><br>
-                <textarea name="experiencia" id="experiencia" cols="30" rows="10"><?=$experiencia?></textarea><br>
+                <textarea name="experiencia" id="experiencia" rows="6"><?=$experiencia?></textarea><br>
                 <label for="mas">Más información</label><br>
-                <textarea name="mas" id="mas" cols="30" rows="10"><?=$masinfo?></textarea><br>
+                <textarea name="mas" id="mas" rows="6"><?=$masinfo?></textarea><br>
                 <input type="hidden" name="id_cv" value="<?=$id_cv?>">
                 <input type="hidden" name="id_candidato" value="<?=$id_candidato?>">
                 <button type="submit">Guardar datos</button>

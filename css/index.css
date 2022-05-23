@@ -1,0 +1,105 @@
+#accesos{
+    text-align: center;
+    position: relative;
+    top: calc(50% - 20%);
+    left: calc(50% - 25%);
+    width: 50%;
+    height: 40%;
+}
+#accesos #candidatos,#accesos #empresas{
+    padding: 1em;
+    width: 100%;
+    height: 35px;
+    font-size: 1.5em;
+    border: 1px solid black;
+    margin: 1em auto;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: crimson;
+}
+#candidatos:hover,#empresas:hover{
+    background-color: blue;
+}
+#iniciocandidatos,#inicioempresas{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+}
+#iniciocandidatos div ,#inicioempresas div{
+    width: 50%;
+    margin: 1em;
+    background-color: white;
+    padding: 1em;
+}
+#iniciocandidatos form ,#inicioempresas form{
+    width: 80%;
+    font-size: 1.2em;
+}
+#iniciocandidatos input ,#inicioempresas input{
+    width: 100%;
+    margin: 0.8em 0;
+    border-radius: 5px;
+    height: 30px;
+}
+#iniciocandidatos button ,#inicioempresas button{
+    position: relative;
+    width: 60%;
+    height: 50px;
+    border: none;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+    margin: 1em;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+#registrocandidatos button:hover ,#registroempresas button:hover{
+    background-color: red;
+}
+#regcandidatos,#regempresas{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+#regcandidatos form ,#regempresas form{
+    text-align: left;
+    margin: 1em auto;
+    padding: 2em;
+    border-radius: 10px;
+    width: 50%;
+    font-size: 1.2em;
+    background-color: white;
+}
+#regcandidatos input ,#regempresas input{
+    width: 100%;
+    margin: 0.8em 0;
+    border-radius: 5px;
+    height: 30px;
+}
+#regcandidatos button ,#regempresas button{
+    position: relative;
+    width: 60%;
+    left: calc(50% - 30%);
+    height: 50px;
+    border: none;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+    margin: 0.5em 0;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+@media all and (max-width:768px){
+    #candidatos,#empresas{
+        font-size: 1.2em;
+        padding: 0px;
+    }
+}

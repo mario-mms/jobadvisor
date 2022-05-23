@@ -25,6 +25,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Buscador de Empresas</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -54,7 +55,7 @@
                     echo "<p>$resultado[informacion]</p>";
                     echo "<h3>Contacto:</h3>";
                     echo "<p>Email: <a href='mailto:$resultado[email]'>$resultado[email]</a></p>";
-                    echo "<p>Email: <a href='tel:$resultado[telefono]'>$resultado[telefono]</a></p>";
+                    echo "<p>Teléfono: <a href='tel:$resultado[telefono]'>$resultado[telefono]</a></p>";
                     echo "<p><a href='opinar.php?id_empresa=$resultado[id_empresa]'>Opinar</a></p>";
                     echo "</div>";
 

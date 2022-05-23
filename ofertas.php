@@ -28,6 +28,7 @@
             $resultado=$consulta->fetch_assoc();
         }
         else{
+            $oferta=NULL;
             $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
             $consulta=$mysql->query("SELECT * FROM ofertas JOIN empresas using (id_empresa)");
             $resultado=$consulta->fetch_assoc();
@@ -47,8 +48,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Buscar ofertas</title>
-    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -63,10 +64,11 @@
         </div>
     </header>
     <main>
+        <h1 id="eslogan">Encuentra tu empleo fácilmente</h1>
         <section id="buscador">
             <form action="ofertas.php" method="post">
                 <label for="oferta">Buscar ofertas de...</label>
-                <input type="text" name="oferta" id="oferta" value="">
+                <input type="text" name="oferta" id="oferta" value="<?=$oferta?>">
                 <label for="provincia">Provincia</label>
                 <select name="provincia" id="provincia" >
                     <option value="">Cargando...</option>
@@ -78,17 +80,19 @@
             <?php
                 while ($resultado){
                     echo "<div>";
+                    echo "<h1>$resultado[titulo]</h1>";
                     echo "<h2><a href='opinar.php?id_empresa=$resultado[id_empresa]'>$resultado[nombre]</a></h2>";
-                    echo "<h2>Puesto: $resultado[titulo]</h2>";
+                    echo "<p>Provincia: $resultado[provincia]</p>";
                     echo "<h3>Contacto</h3>";
                     echo "<p>Teléfono: <a href='tel:$resultado[telefono]'>$resultado[telefono]</a></p>";
                     echo "<p>Correo electrónico: <a href='mailto:$resultado[email]'>$resultado[email]</a></p>";
-                    echo "<p>Provincia: $resultado[provincia]</p>";
+                    echo "<h3>Detalles del empleo</h3>";
                     echo "<p>Fecha de publicación: $resultado[fecha_actual]</p>";
                     echo "<p>Salario: $resultado[salario]</p>";
                     echo "<p>Horario: $resultado[horario]</p>";
                     echo "<p>Duración: $resultado[duracion]</p>";
-                    echo "<p>Descripción del puesto: $resultado[descripcion]</p>";
+                    echo "<h3>Descripción completa del empleo</h3>";
+                    echo "<p>$resultado[descripcion]</p>";
                     echo "</div>";
 
                     $resultado=$consulta->fetch_assoc();

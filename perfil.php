@@ -47,6 +47,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mi Perfil</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -88,9 +89,9 @@
                     <label for='telefono'>Teléfono de contacto</label><br>
                     <input type='tel' name='telefono' value='$telefono' required maxlength='9'><br>
                     <label for='informacion'>Información adicional</label><br>
-                    <textarea name='informacion' style='width: 100%; border-radius: 5px;' rows='4'>$informacion</textarea><br>
+                    <textarea name='informacion' rows='5'>$informacion</textarea><br>
                     <label for='email'>Correo electrónico</label><br>
-                    <input type='email' name='email' value='$email' required><br>
+                    <input type='email' name='email' value='$email' required disabled><br>
                     <label for='pass'>Contraseña</label><br>
                     <input type='password' name='pass' required><br>
                     <input type='hidden' name='id_empresa' value='$id_empresa'>
@@ -112,7 +113,7 @@
                     <label for='telefono'>Teléfono de contacto</label><br>
                     <input type='tel' name='telefono' value='$telefono' required maxlength='9'><br>
                     <label for='email'>Correo electrónico</label><br>
-                    <input type='email' name='email' value='$email' required><br>
+                    <input type='email' name='email' value='$email' required disabled><br>
                     <label for='pass'>Contraseña</label><br>
                     <input type='password' name='pass' required><br>
                     <input type='hidden' name='id_candidato' value='$id_candidato'>

@@ -1,110 +1,130 @@
-#accesos{
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+#eslogan{
     position: relative;
-    top: calc(50% - 20%);
-    left: calc(50% - 25%);
-    width: 50%;
-    height: 40%;
+    top: 0;
+    left: 5%;
+    width: 95%;
+
 }
-#accesos #candidatos,#accesos #empresas{
-    padding: 1em;
-    width: 100%;
-    height: 35px;
-    font-size: 1.5em;
-    border: 1px solid black;
+#buscador{
     margin: 1em auto;
+    background-color: white;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 97%;
+    height: 12%;
+    text-align: center;
+    font-size: 1.2em;
     border-radius: 10px;
+}
+#buscador input, #buscador select{
+    font-size: 1em;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+#buscador button{
+    width: 20%;
+    height: 40px;
+    border: none;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+    margin: 1em;
+    font-size: 1em;
     cursor: pointer;
-    background-color: crimson;
 }
-#candidatos:hover,#empresas:hover{
-    background-color: blue;
-}
-#registrocandidatos,#registroempresas{
-    display: none;
-    position: absolute;
+#ofertas,#empresas,#opiniones,#misofertas,#candidatos,#opiniones{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 1em auto;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     font-size: 1em;
 }
-#registrocandidatos div ,#registroempresas div{
+#empresas div,#ofertas div,#opiniones div,#misofertas div,#candidatos div,#opiniones div{
+    background-color: white;
+    margin: 1em;
+    padding: 1em 2em;
+    border-radius: 10px;
+    width: 25%;
+}
+#cv,#datos,#publicar,#opinar{
+    position: relative;
+    top: 0;
+    margin: auto;
+    width: 80%;
+    background-color: white;
+    text-align: center;
+    font-size: 1.2em;
+}
+#cv h3, #datos h2,#datos h3,#opinar h1,#opinar h3{
+    margin: 0.5em;
+}
+#cv textarea, #cv select{
+    margin: 0.5em;
+    border-radius: 5px;
+}
+#cv textarea, #cv select{
+    width: 60%;
+    font-size: 1em;
+}
+#cv button,#datos button,#publicar button,#opinar button{
+    width: 20%;
+    height: 40px;
+    border: none;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+    margin: 1em;
+    font-size: 1em;
+    cursor: pointer;
+}
+#datos input, #datos textarea{
+    font-size: 1em;
+    margin: 3px;
     width: 50%;
-    margin: 1em;
-    background-color: white;
-    padding: 1em;
-}
-#registrocandidatos form ,#registroempresas form{
-    width: 80%;
-    font-size: 1.2em;
-}
-#registrocandidatos input ,#registroempresas input{
-    width: 100%;
-    margin: 0.8em 0;
     border-radius: 5px;
-    height: 30px;
+    border: 1px solid black;
 }
-#registrocandidatos button ,#registroempresas button{
-    position: relative;
-    width: 60%;
-    height: 50px;
-    border: none;
-    background-color: orange;
+#publicar input, #publicar textarea,#publicar select, #opinar input,#opinar textarea,#opinar select{
+    font-size: 1em;
+    margin: 3px;
+    width: 50%;
     border-radius: 5px;
-    color: white;
-    margin: 1em;
-    font-size: 1.3em;
-    cursor: pointer;
-}
-#registrocandidatos button:hover ,#registroempresas button:hover{
-    background-color: orangered;
-}
-#regcandidatos,#regempresas{
-    display: none;
-    position: absolute;
-    left: calc(50% - 35%);
-    top: calc(50% - 45%);
-    width: 70%;
-    background-color: white;
-    text-align: center;
-}
-#regcandidatos form ,#regempresas form{
-    text-align: left;
-    margin: 1em auto;
-    width: 80%;
-    font-size: 1.2em;
-}
-#regcandidatos input ,#regempresas input{
-    width: 100%;
-    margin: 0.8em 0;
-    border-radius: 5px;
-    height: 30px;
-}
-#regcandidatos button ,#regempresas button{
-    position: relative;
-    width: 60%;
-    left: calc(50% - 30%);
-    height: 50px;
-    border: none;
-    background-color: orange;
-    border-radius: 5px;
-    color: white;
-    margin: 1em 0;
-    font-size: 1.3em;
-    cursor: pointer;
-}
-#cv{
-    position: absolute;
-    left: calc(50% - 35%);
-    top: calc(50% - 45%);
-    width: 70%;
-    background-color: white;
-    text-align: center;
+    border: 1px solid black;
 }
 @media all and (max-width:768px){
-    #candidatos,#empresas{
+    #buscador input, #buscador select{
+        font-size: 0.5em;
+    }
+    #buscador button{
+        width: 50%;
+        height: 20px;
+        border: none;
+        background-color: orange;
+        border-radius: 5px;
+        color: white;
+        margin: 0.6em 0;
+        font-size: 0.5em;
+        cursor: pointer;
+    }
+    #ofertas{
+        display: block;
+        margin: 1em auto;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         font-size: 1.2em;
-        padding: 0px;
+    }
+    #ofertas div{
+        background-color: white;
+        width: 80%;
+        margin: 1em;
     }
 }

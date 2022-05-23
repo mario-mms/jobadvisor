@@ -30,6 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Opiniones</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -58,7 +59,6 @@
                     echo "<p>$resultado[opinion]</p>";
                     echo "<p>Inicio del contrato: $resultado[inicio_contrato]</p>";
                     echo "<p>Fin del contrato: $resultado[fin_contrato]</p>";
-                    echo "</div>";
 
                     $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
                     $consulta2=$mysql->query("SELECT * FROM respuestas JOIN opiniones USING (id_opinion) WHERE id_opinion='$resultado[id_opinion]'");
@@ -71,12 +71,14 @@
                         echo "<input type='hidden' name='id_opinion' value='$resultado[id_opinion]'> ";
                         echo "<button type='submit'>Responder</button>";
                         echo "</form>";
+                        echo "</div>";
                     }
                     else{
                         $resultado2=$consulta2->fetch_assoc();
                         echo "<h1>Respuesta</h1>";
                         echo "<h3>$resultado2[cabecera]</h3>";
                         echo "<p>$resultado2[respuesta]</p>";
+                        echo "</div>";
                     }
                     $resultado=$consulta->fetch_assoc();
                 }

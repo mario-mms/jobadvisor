@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
 body{
     margin: 0;
+    font-family: "Rowdies",cursive;
+}
+input, select, button,textarea{
+    font-family: "Rowdies", cursive;
 }
 header{
     top: 0;
@@ -17,8 +22,8 @@ header img{
 }
 #enlaces{
     position: absolute;
-    right: 10px;
     top: calc(50% - 0.6em);
+    right: 10px;
 }
 #enlaces a{
     font-size: 1.2em;

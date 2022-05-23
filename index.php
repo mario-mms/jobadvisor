@@ -15,7 +15,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JOBADVISOR</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/comun.css">
 </head>
 <body>
@@ -31,14 +31,14 @@
                 Acceso empresas
             </div>
         </section>
-        <section id="registrocandidatos">
+        <section id="iniciocandidatos">
             <div>
                 <h2>Accede como candidato</h2>
-                <form  action="" method="post" >
+                <form  action="iniciosesion.php" method="post" id="inicio">
                     <label for="email">Email</label><br>
-                    <input type="email" name="email" id="email"><br>
+                    <input type="email" name="email" id="email" required placeholder="pepito@correo.com"><br>
                     <label for="pass">Contraseña</label><br>
-                    <input type="password" name="pass" id="pass"><br>
+                    <input type="password" name="pass" id="pass" required><br>
                     <button type="submit" id="iniciosesion">Iniciar sesión</button>
                     <p id="aviso"></p>
                 </form>
@@ -59,28 +59,29 @@
             <h3>Los siguientes campos son obligatorios</h3>
             <form action="registrocandidatos.php" method="post">
                 <label for="nombre">Nombre</label><br>
-                <input type="text" name="nombre" required autocapitalize="sentences"><br>
+                <input type="text" name="nombre" id="nombrecand" required autocapitalize="sentences"><br>
                 <label for="apellido1">Primer Apellido</label><br>
-                <input type="text" name="apellido1" required><br>
+                <input type="text" name="apellido1" id="apellido1" required autocapitalize="sentences"><br>
                 <label for="apellido2">Segundo Apellido</label><br>
-                <input type="text" name="apellido2" required><br>
+                <input type="text" name="apellido2" id="apellido2" required autocapitalize="sentences"><br>
                 <label for="nif">NIF</label><br>
-                <input type="text" name="nif" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))" maxlength="9"><br>
+                <input type="text" name="nif" id="nif" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))" maxlength="9"><br>
                 <label for="telefono">Teléfono de contacto</label><br>
-                <input type="tel" name="telefono" required maxlength="9"><br>
+                <input type="tel" name="telefono" id="telefonocand" required maxlength="9"><br>
                 <label for="email">Correo electrónico</label><br>
-                <input type="email" name="email" required><br>
+                <input type="email" name="email" id="email3" required><br>
                 <label for="pass">Contraseña</label><br>
-                <input type="password" name="pass" required><br>
-                <button type="submit">Registrar</button>
+                <input type="password" name="pass" id="pass3" required><br>
+                <p id="aviso3" style="color: red"></p>
+                <button type="submit" id="registrocandidatos">Registrar</button>
             </form>
         </section>
-        <section id="registroempresas">
+        <section id="inicioempresas">
             <div>
                 <h2>Accede como empresa</h2>
-                <form  action="" method="post">
+                <form  action="iniciosesion.php" method="post">
                     <label for="email">Email</label><br>
-                    <input type="email" name="email" id="email2"><br>
+                    <input type="email" name="email" id="email2" placeholder="pepito@correo.com"><br>
                     <label for="pass">Contraseña</label><br>
                     <input type="password" name="pass" id="pass2"><br>
                     <button type="submit" id="iniciosesion2">Iniciar sesión</button>
@@ -103,18 +104,19 @@
             <h3>Los siguientes campos son obligatorios</h3>
             <form action="registroempresas.php" method="post">
                 <label for="nombre">Nombre de la empresa</label><br>
-                <input type="text" name="nombre" required autocapitalize="sentences"><br>
+                <input type="text" name="nombre" id="nombreemp" required autocapitalize="sentences"><br>
                 <label for="cif">CIF</label><br>
-                <input type="text" name="cif" required pattern='^([ABCDFGHJKLMNPQRSUVWabcdfghlmnpqrsuvw])([0-9]{7})([0-9A-Ja]$' maxlength='9'><br>
+                <input type="text" name="cif" id="cif" required pattern='^([ABCDFGHJKLMNPQRSUVWabcdfghlmnpqrsuvw])([0-9]{7})([0-9A-Ja]$' maxlength='9'><br>
                 <label for="telefono">Teléfono de contacto</label><br>
-                <input type="tel" name="telefono" required maxlength="9"><br>
+                <input type="tel" name="telefono" id="telefonoemp" required maxlength="9"><br>
                 <label for="informacion">Información adicional</label><br>
-                <textarea name="informacion" style="width: 100%; border-radius: 5px;" rows="4"></textarea><br>
+                <textarea name="informacion" id="informacion" style="width: 100%; border-radius: 5px;" rows="4"></textarea><br>
                 <label for="email">Correo electrónico</label><br>
-                <input type="email" name="email" required><br>
+                <input type="email" name="email" id="email4" required><br>
                 <label for="pass">Contraseña</label><br>
-                <input type="password" name="pass" required><br>
-                <button type="submit">Darse de alta</button>
+                <input type="password" name="pass"  id="pass4" required><br>
+                <p id="aviso4" style="color: red"></p>
+                <button type="submit" id="registroempresas" onclick="pregunta()">Darse de alta</button>
             </form>
         </section>
     </main>

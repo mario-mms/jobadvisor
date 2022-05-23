@@ -21,6 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mis ofertas</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -45,7 +46,7 @@
 
                         echo "<div>";
                         echo "<h2>$resultado[titulo]</h2>";
-                        echo "<p>Salario: $resultado[salario] €</p>";
+                        echo "<p>Salario: $resultado[salario]</p>";
                         echo "<p>Duración: $resultado[duracion]</p>";
                         echo "<p>Horario: $resultado[horario]</p>";
                         echo "<p>Fecha de publicación: $resultado[fecha_actual]</p>";

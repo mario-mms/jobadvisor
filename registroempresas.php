@@ -1,5 +1,6 @@
 <?php
     session_start();
+    header("Content-Type:application/json;charset=utf-8");
     if (isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['id_empresa'])==FALSE){
         $nombre=$_POST['nombre'];
         $cif=$_POST['cif'];
@@ -10,19 +11,27 @@
         $passhash=password_hash($pass,PASSWORD_DEFAULT);
 
         $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
-        $consulta=$mysql->query("INSERT INTO empresas (nombre,cif,telefono,informacion,email,password) 
+        $consulta0=$mysql->query("SELECT count(*) as registro FROM candidatos WHERE email='$email'");
+        $resultado0=$consulta0->fetch_assoc();
+        $consulta1=$mysql->query("SELECT count(*) as registro FROM empresas WHERE email='$email'");
+        $resultado1=$consulta1->fetch_assoc();
+        if ($resultado0["registro"]==1 OR $resultado1["registro"]==1){
+            echo '{"existe":"si"}';
+        }
+        else{
+            $consulta = $mysql->query("INSERT INTO empresas (nombre,cif,telefono,informacion,email,password) 
                                 VALUES ('$nombre','$cif','$telefono','$informacion','$email','$passhash')");
 
-        if ($mysql->affected_rows!==0){
-            $_SESSION['email']=$email;
-            $_SESSION['pass']=$passhash;
-            $_SESSION['cif']=$cif;
+            if ($mysql->affected_rows !== 0) {
+                $_SESSION['email'] = $email;
+                $_SESSION['pass'] = $passhash;
+                $_SESSION['cif'] = $cif;
 
-            header("Location:misofertas.php");
+                header("Location:misofertas.php");
+            }
         }
-
     }
-    else if(isset($_SESSION['email']) && isset($_SESSION['pass']) && isset($_SESSION['cif']) && isset($_POST['email']) && isset($_POST['pass'])){
+    else if(isset($_SESSION['email']) && isset($_SESSION['pass']) && isset($_SESSION['cif']) && isset($_POST['id_empresa'])){
         $nombre=$_POST['nombre'];
         $cif=$_POST['cif'];
         $telefono=$_POST['telefono'];

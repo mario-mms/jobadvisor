@@ -22,6 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mis opiniones</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -52,7 +53,6 @@
                     echo "<p>Inicio del contrato: $resultado[inicio_contrato]</p>";
                     echo "<p>Fin del contrato: $resultado[fin_contrato]</p>";
                     echo "<p><a href='borrar.php?id_opinion=$resultado[id_opinion]'>Borrar opinión</a></p>";
-                    echo "</div>";
 
                     $consulta2=$mysql->query("SELECT * FROM respuestas JOIN opiniones USING (id_opinion) WHERE id_opinion='$resultado[id_opinion]'");
                     if ($mysql->affected_rows!==0){
@@ -60,6 +60,7 @@
                         echo "<h1>Respuesta</h1>";
                         echo "<h3>$resultado2[cabecera]</h3>";
                         echo "<p>$resultado2[respuesta]</p>";
+                        echo "</div>";
                     }
                     $resultado=$consulta->fetch_assoc();
                 }

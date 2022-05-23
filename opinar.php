@@ -45,6 +45,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Perfil Empresa</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -59,13 +60,11 @@
         </div>
     </header>
     <main>
-        <section id="empresa">
-            <?php
-                echo "<h2>$nombre</h2>";
-            ?>
-        </section>
         <section id="opinar">
-            <h1>Tú opinion puede ser útil para el resto de candidatos</h1>
+            <?php
+                echo "<h1>$nombre</h1>";
+            ?>
+            <h3>Tú opinion puede ser útil para el resto de candidatos</h3>
             <form action="opinar.php" method="post">
                 <label for="opinion">Opinión</label><br>
                 <textarea name="opinion" cols="30" rows="10" required></textarea><br>

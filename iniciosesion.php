@@ -44,4 +44,7 @@
                 echo '{"correcto":"no"}';
             }
         }
+    else{
+        header("Location:index.php");
+    }
 ?>

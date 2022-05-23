@@ -1,53 +1,36 @@
 <?php
     session_start();
     if (isset($_SESSION['email']) && isset($_SESSION['pass']) && isset($_SESSION['cif'])){
-        if (isset($_POST['provincia']) && isset($_POST['experiencia'])){
+        if ($_POST['provincia']=="all" && isset($_POST['experiencia'])){
 
+            $provincia=$_POST['provincia'];
+            $experiencia=$_POST['experiencia'];
+            $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
+            $consulta=$mysql->query("SELECT * FROM candidatos JOIN cv USING (id_candidato) JOIN experiencia USING (id_cv)
+                                    JOIN titulacion USING (id_cv) JOIN masinfo USING (id_cv) WHERE experiencia LIKE '%$experiencia%'");
+                                    //AND MATCH(experiencia) AGAINST ('$experiencia')");
+            $resultado=$consulta->fetch_assoc();
+        }
+        else if ($_POST['experiencia']=='' && isset($_POST['provincia'])){
+
+            $provincia=$_POST['provincia'];
+            $experiencia=$_POST['experiencia'];
+            $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
+            $consulta=$mysql->query("SELECT * FROM candidatos JOIN cv USING (id_candidato) JOIN experiencia USING (id_cv)
+                                    JOIN titulacion USING (id_cv) JOIN masinfo USING (id_cv) WHERE provincia = '$provincia'");
+            $resultado=$consulta->fetch_assoc();
+        }
+        else if(isset($_POST['provincia']) && isset($_POST['experiencia'])){
             $provincia=$_POST['provincia'];
             $experiencia=$_POST['experiencia'];
             $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
             $consulta=$mysql->query("SELECT * FROM candidatos JOIN cv USING (id_candidato) JOIN experiencia USING (id_cv)
                                     JOIN titulacion USING (id_cv) JOIN masinfo USING (id_cv) WHERE provincia = '$provincia' 
-                                    AND MATCH(experiencia) AGAINST ('$experiencia')");
+                                    AND experiencia like '%$experiencia%'");
             $resultado=$consulta->fetch_assoc();
         }
-        /*else if (isset($_POST['provincia'])){
-
-            $provincia=$_POST['provincia'];
-            $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
-            $consulta=$mysql->query("SELECT * FROM candidatos JOIN cv USING (id_candidato) JOIN experiencia USING (id_cv)
-                                    JOIN titulacion USING (id_cv) JOIN masinfo USING (id_cv) WHERE provincia = '$provincia'");
-            $resultado=$consulta->fetch_assoc();
-
-            $nombre=$resultado['nombre'];
-            $apellido1=$resultado['apellido1'];
-            $apellido2=$resultado['apellido2'];
-            $telefono=$resultado['telefono'];
-            $email=$resultado['email'];
-            $provincia=$resultado['provincia'];
-            $experiencia=$resultado['experiencia'];
-            $titulacion=$resultado['titulacion'];
-            $masinfo=$resultado['masinfo'];
-        }
-        else if (isset($_POST['experiencia'])){
-
-            $experiencia=$_POST['experiencia'];
-            $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
-            $consulta=$mysql->query("SELECT * FROM candidatos JOIN cv USING (id_candidato) JOIN experiencia USING (id_cv)
-                                    JOIN titulacion USING (id_cv) JOIN masinfo USING (id_cv) WHERE MATCH(experiencia) AGAINST ('$experiencia')");
-            $resultado=$consulta->fetch_assoc();
-
-            $nombre=$resultado['nombre'];
-            $apellido1=$resultado['apellido1'];
-            $apellido2=$resultado['apellido2'];
-            $telefono=$resultado['telefono'];
-            $email=$resultado['email'];
-            $provincia=$resultado['provincia'];
-            $experiencia=$resultado['experiencia'];
-            $titulacion=$resultado['titulacion'];
-            $masinfo=$resultado['masinfo'];
-        }*/
         else{
+            $experiencia=NULL;
             $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
             $consulta=$mysql->query("SELECT * FROM candidatos LEFT JOIN cv USING (id_candidato) LEFT JOIN experiencia USING (id_cv)
                                     LEFT JOIN titulacion USING (id_cv) LEFT JOIN masinfo USING (id_cv)");
@@ -67,6 +50,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Buscar Candidatos</title>
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
@@ -83,11 +67,11 @@
     <main>
         <section id="buscador">
             <form action="candidatos.php" method="post">
-                <label for="oferta">Puesto buscado</label>
-                <input type="text" name="experiencia" required>
+                <label for="oferta">¿Qué experiencia debe tener?</label>
+                <input type="text" name="experiencia" value="<?=$experiencia?>">
                 <label for="provincia">Provincia</label>
-                <select name="provincia" id="provincia" required>
-                    <option value="" disabled selected>Selecciona la Provincia</option>
+                <select name="provincia" id="provincia">
+                    <option value="">Cargando...</option>
                 </select>
                 <button type="submit">Buscar</button>
             </form>
@@ -126,6 +110,7 @@
             "dataType":"json"
         });
         peticion.done(function (data){
+            $("#provincia").html("<option value='all' selected>Selecciona la provincia</option>");
             for (let provincias of data.records){
                 let provincia=provincias.fields.texto;
                 $("#provincia").append(`<option value="${provincia}">${provincia}</option>`);
