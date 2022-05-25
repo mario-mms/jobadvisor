@@ -30,17 +30,29 @@
 </head>
 <body>
     <header>
-        <a href="index.php"><img src="img/logopeq.png" alt="logo"></a>
+        <a href="index.php"><img id="logo" src="img/logopeq.png" alt="logo"></a>
         <div id="enlaces">
             <a href="candidatos.php">Buscar Candidatos</a>
-            <a href="misofertas.php">Mis ofertas</a>
             <a href="publicar.php">Publicar oferta</a>
             <a href="opiniones.php">Opiniones</a>
-            <a href="perfil.php">Perfil</a>
-            <a href="cerrarsesion.php">Cerrar sesión</a>
+        </div>
+        <img id="menu" src="img/person.svg" alt="menu">
+        <img id="menu2" src="img/menu.svg" alt="menu2">
+        <div id="desplegable">
+            <ul>
+                <div id="oculto">
+                    <li><a href="candidatos.php">Buscar Candidatos</a></li>
+                    <li><a href="publicar.php">Publicar oferta</a></li>
+                    <li><a href="opiniones.php">Opiniones</a></li>
+                </div>
+                <li><a href="misofertas.php">Mis ofertas</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="cerrarsesion.php">Cerrar sesión</a></li>
+            </ul>
         </div>
     </header>
     <main>
+        <h1>Publica tu oferta</h1>
         <section id="publicar">
             <form action="publicaroferta.php" method="post">
                 <label for="titulo">Puesto que buscas</label><br>
@@ -69,19 +81,4 @@
 </body>
 </html>
 <script src="js/jQuery.js"></script>
-<script>
-    $(function (){
-        let peticion=$.ajax({
-            "url":"https://public.opendatasoft.com/api/records/1.0/search/?dataset=provincias-espanolas&sort=provincia&rows=52",
-            "method":"get",
-            "dataType":"json"
-        });
-        peticion.done(function (data){
-            $("#provincia").html("<option value='all' selected>Selecciona la provincia</option>");
-            for (let provincias of data.records){
-                let provincia=provincias.fields.texto;
-                $("#provincia").append(`<option value="${provincia}">${provincia}</option>`);
-            }
-        });
-    });
-</script>
+<script src="js/comun.js"></script>

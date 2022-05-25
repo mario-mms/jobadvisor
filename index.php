@@ -4,7 +4,7 @@
         header("Location:ofertas.php");
     }
     else if (isset($_SESSION['email']) && isset($_SESSION['pass']) && isset($_SESSION['cif'])){
-        header("Location:misofertas.php");
+        header("Location:candidatos.php");
     }
 ?>
 <!doctype html>
@@ -20,7 +20,7 @@
 </head>
 <body>
     <header>
-        <a href="index.php"><img src="img/logopeq.png" alt="logo"></a>
+        <a href="index.php"><img id="logo" src="img/logopeq.png" alt="logo"></a>
     </header>
     <main>
         <section id="accesos">
@@ -67,7 +67,7 @@
                 <label for="nif">NIF</label><br>
                 <input type="text" name="nif" id="nif" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))" maxlength="9"><br>
                 <label for="telefono">Teléfono de contacto</label><br>
-                <input type="tel" name="telefono" id="telefonocand" required maxlength="9"><br>
+                <input type="tel" name="telefono" id="telefonocand" required maxlength="9" pattern="[0-9]{9}"><br>
                 <label for="email">Correo electrónico</label><br>
                 <input type="email" name="email" id="email3" required><br>
                 <label for="pass">Contraseña</label><br>
@@ -108,15 +108,15 @@
                 <label for="cif">CIF</label><br>
                 <input type="text" name="cif" id="cif" required pattern='^([ABCDFGHJKLMNPQRSUVWabcdfghlmnpqrsuvw])([0-9]{7})([0-9A-Ja]$' maxlength='9'><br>
                 <label for="telefono">Teléfono de contacto</label><br>
-                <input type="tel" name="telefono" id="telefonoemp" required maxlength="9"><br>
+                <input type="tel" name="telefono" id="telefonoemp" required maxlength="9" pattern="[0-9]{9}"><br>
                 <label for="informacion">Información adicional</label><br>
-                <textarea name="informacion" id="informacion" style="width: 100%; border-radius: 5px;" rows="4"></textarea><br>
+                <textarea name="informacion" id="informacion" rows="4"></textarea><br>
                 <label for="email">Correo electrónico</label><br>
                 <input type="email" name="email" id="email4" required><br>
                 <label for="pass">Contraseña</label><br>
                 <input type="password" name="pass"  id="pass4" required><br>
                 <p id="aviso4" style="color: red"></p>
-                <button type="submit" id="registroempresas" onclick="pregunta()">Darse de alta</button>
+                <button type="submit" id="registroempresas">Darse de alta</button>
             </form>
         </section>
     </main>

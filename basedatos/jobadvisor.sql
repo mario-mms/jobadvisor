@@ -51,7 +51,7 @@ create table masinfo(
 create table empresas(
   id_empresa int auto_increment,
   nombre varchar(100) not null unique ,
-  cif int,
+  cif char(9),
   telefono int(9) not null unique ,
   informacion varchar(1000),
   email varchar(100) not null unique ,

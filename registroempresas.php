@@ -2,11 +2,11 @@
     session_start();
     header("Content-Type:application/json;charset=utf-8");
     if (isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['id_empresa'])==FALSE){
-        $nombre=$_POST['nombre'];
-        $cif=$_POST['cif'];
+        $nombre=filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
+        $cif=filter_var($_POST['cif'],FILTER_SANITIZE_STRING);
         $telefono=$_POST['telefono'];
-        $informacion=$_POST['informacion'];
-        $email=$_POST['email'];
+        $informacion=filter_var(nl2br($_POST['nombre']),FILTER_SANITIZE_STRING);
+        $email=filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
         $pass=$_POST['pass'];
         $passhash=password_hash($pass,PASSWORD_DEFAULT);
 
@@ -27,21 +27,19 @@
                 $_SESSION['pass'] = $passhash;
                 $_SESSION['cif'] = $cif;
 
-                header("Location:misofertas.php");
+                header("Location:candidatos.php");
             }
         }
     }
     else if(isset($_SESSION['email']) && isset($_SESSION['pass']) && isset($_SESSION['cif']) && isset($_POST['id_empresa'])){
-        $nombre=$_POST['nombre'];
-        $cif=$_POST['cif'];
+        $nombre=filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
+        $cif=filter_var($_POST['cif'],FILTER_SANITIZE_STRING);
         $telefono=$_POST['telefono'];
-        $informacion=$_POST['informacion'];
-        $email=$_POST['email'];
+        $informacion=filter_var(nl2br($_POST['nombre']),FILTER_SANITIZE_STRING);
         $pass=$_POST['pass'];
         $passhash=password_hash($pass,PASSWORD_DEFAULT);
         $id_empresa=$_POST['id_empresa'];
 
-        $_SESSION['email']=$email;
         $_SESSION['pass']=$passhash;
         $_SESSION['cif']=$cif;
 
@@ -50,10 +48,9 @@
         $consulta2=$mysql->query("UPDATE empresas SET cif='$cif' WHERE id_empresa='$id_empresa'");
         $consulta3=$mysql->query("UPDATE empresas SET telefono='$telefono' WHERE id_empresa='$id_empresa'");
         $consulta4=$mysql->query("UPDATE empresas SET informacion='$informacion' WHERE id_empresa='$id_empresa'");
-        $consulta5=$mysql->query("UPDATE empresas SET email='$email' WHERE id_empresa='$id_empresa'");
         $consulta6=$mysql->query("UPDATE empresas SET password='$passhash' WHERE id_empresa='$id_empresa'");
 
-        header("Location:misofertas.php");
+        header("Location:candidatos.php");
     }
     else{
         header("Location:index.php");

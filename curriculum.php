@@ -2,9 +2,9 @@
     session_start();
     if (isset($_SESSION['email']) && isset($_SESSION['pass']) && isset($_SESSION['nif'])){
 
-        $experiencia=$_POST['experiencia'];
-        $titulacion=$_POST['titulacion'];
-        $mas=$_POST['mas'];
+        $experiencia=filter_var(nl2br($_POST['experiencia']),FILTER_SANITIZE_STRING);
+        $titulacion=filter_var(nl2br($_POST['titulacion']),FILTER_SANITIZE_STRING);
+        $mas=filter_var(nl2br($_POST['mas']),FILTER_SANITIZE_STRING);
         $id_candidato=$_POST['id_candidato'];
         $provincia=$_POST['provincia'];
 

@@ -13,21 +13,61 @@ header{
     width: 100%;
     position: fixed;
     background-color: lightblue;
+    z-index: 99;
 }
-header img{
-    position: relative;
-    top: -5px;
-    left: -150px;
-    transform: scale(40%);
+#logo{
+    position: absolute;
+    top: calc(50% - 45%);
+    left: 0;
+    height: 90%;
 }
 #enlaces{
     position: absolute;
-    top: calc(50% - 0.6em);
-    right: 10px;
+    top: 30%;
+    right: 7%;
 }
 #enlaces a{
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin: 0 10px;
+    color: white;
+}
+#desplegable{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 15%;
+    background-color: lightblue;
+}
+#desplegable a{
+    color: white;
+    font-size: 1.3em;
+}
+#menu{
+    position: absolute;
+    right: 3%;
+    top: 15%;
+    cursor: pointer;
+}
+#menu{
+    color: white;
+}
+#menu2{
+    position: absolute;
+    right: 3%;
+    top: 15%;
+    cursor: pointer;
+    display: none;
+}
+#oculto{
+    display: none;
+}
+ul{
+    list-style: none;
+    padding-left: 15px;
+}
+li{
+    margin: 10px 0;
 }
 main{
     position: fixed;
@@ -37,6 +77,10 @@ main{
     height: 80%;
     background-color: bisque;
     overflow: auto;
+    z-index: 0;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 footer{
     text-align: center;
@@ -59,4 +103,27 @@ footer a:hover{
     font-size: 1.2em;
     text-decoration: 2px underline solid red;
     transition: 0.5s;
+}
+@media all and (max-width:1000px){
+    #enlaces{
+        display: none;
+    }
+    #oculto{
+        display: block;
+    }
+    #desplegable{
+        width: 20%;
+    }
+    #menu2{
+        display: block;
+    }
+    #menu{
+        display: none;
+    }
+    #logo{
+        position: absolute;
+        top: calc(50% - 35%);
+        left: 0;
+        height: 70%;
+    }
 }

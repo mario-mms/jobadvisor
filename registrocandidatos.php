@@ -2,12 +2,12 @@
     session_start();
     header("Content-Type:application/json;charset=utf-8");
     if(isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['id_candidato'])==FALSE){
-        $nombre=$_POST['nombre'];
-        $apellido1=$_POST['apellido1'];
-        $apellido2=$_POST['apellido2'];
-        $nif=$_POST['nif'];
+        $nombre=filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
+        $apellido1=filter_var($_POST['apellido1'],FILTER_SANITIZE_STRING);
+        $apellido2=filter_var($_POST['apellido2'],FILTER_SANITIZE_STRING);
+        $nif=filter_var($_POST['nif'],FILTER_SANITIZE_STRING);
         $telefono=$_POST['telefono'];
-        $email=$_POST['email'];
+        $email=filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
         $pass=$_POST['pass'];
         $passhash=password_hash($pass,PASSWORD_DEFAULT);
 
@@ -35,10 +35,11 @@
         $mysql->close();
     }
     else if(isset($_SESSION['email']) && isset($_SESSION['pass']) && isset($_SESSION['nif']) && isset($_POST['id_candidato'])){
-        $nombre=$_POST['nombre'];
-        $apellido1=$_POST['apellido1'];
-        $apellido2=$_POST['apellido2'];
+        $nombre=filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
+        $apellido1=filter_var($_POST['apellido1'],FILTER_SANITIZE_STRING);
+        $apellido2=filter_var($_POST['apellido2'],FILTER_SANITIZE_STRING);
         $telefono=$_POST['telefono'];
+        $nif=filter_var($_POST['nif'],FILTER_SANITIZE_STRING);
         $pass=$_POST['pass'];
         $passhash=password_hash($pass,PASSWORD_DEFAULT);
         $id_candidato=$_POST['id_candidato'];
@@ -47,6 +48,7 @@
 
         $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
         $consulta1=$mysql->query("UPDATE candidatos SET nombre='$nombre' WHERE id_candidato='$id_candidato'");
+        $consulta1=$mysql->query("UPDATE candidatos SET nif='$nif' WHERE id_candidato='$id_candidato'");
         $consulta1=$mysql->query("UPDATE candidatos SET apellido1='$apellido1' WHERE id_candidato='$id_candidato'");
         $consulta1=$mysql->query("UPDATE candidatos SET apellido2='$apellido2' WHERE id_candidato='$id_candidato'");
         $consulta3=$mysql->query("UPDATE candidatos SET telefono='$telefono' WHERE id_candidato='$id_candidato'");

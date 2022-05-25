@@ -51,27 +51,51 @@
 </head>
 <body>
     <header>
-        <a href="index.php"><img src="img/logopeq.png" alt="logo"></a>
         <?php
             if ($cif!==NULL){
-                echo '<div id="enlaces">
-                            <a href="candidatos.php">Buscar Candidatos</a>
-                            <a href="misofertas.php">Mis ofertas</a>
-                            <a href="publicar.php">Publicar oferta</a>
-                            <a href="opiniones.php">Opiniones</a>
-                            <a href="perfil.php">Perfil</a>
-                            <a href="cerrarsesion.php">Cerrar sesión</a>
-                        </div>';
+                echo '<a href="index.php"><img id="logo" src="img/logopeq.png" alt="logo"></a>
+        <div id="enlaces">
+            <a href="candidatos.php">Buscar Candidatos</a>
+            <a href="publicar.php">Publicar oferta</a>
+            <a href="opiniones.php">Opiniones</a>
+        </div>
+        <img id="menu" src="img/person.svg" alt="menu">
+        <img id="menu2" src="img/menu.svg" alt="menu2">
+        <div id="desplegable">
+            <ul>
+                <div id="oculto">
+                    <li><a href="candidatos.php">Buscar Candidatos</a></li>
+                    <li><a href="publicar.php">Publicar oferta</a></li>
+                    <li><a href="opiniones.php">Opiniones</a></li>
+                </div>
+                <li><a href="misofertas.php">Mis ofertas</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="cerrarsesion.php">Cerrar sesión</a></li>
+            </ul>
+        </div>';
             }
             else if ($nif!==NULL){
-                echo '<div id="enlaces">
-                            <a href="ofertas.php">Buscar Ofertas</a>
-                            <a href="misopiniones.php">Mis opiniones</a>
-                            <a href="buscarempresas.php">Buscar empresas</a>
-                            <a href="cv.php">MI CV</a>
-                            <a href="perfil.php">Perfil</a>
-                            <a href="cerrarsesion.php">Cerrar sesión</a>
-                        </div>';
+                echo '<a href="index.php"><img id="logo" src="img/logopeq.png" alt="logo"></a>
+        <div id="enlaces">
+            <a href="ofertas.php">Buscar Ofertas</a>
+            <a href="buscarempresas.php">Buscar empresas</a>
+            <a href="ofertasexternas.php">Ofertas externas</a>
+        </div>
+        <img id="menu" src="img/person.svg" alt="menu">
+        <img id="menu2" src="img/menu.svg" alt="menu2">
+        <div id="desplegable">
+            <ul>
+                <div id="oculto">
+                    <li><a href="ofertas.php">Buscar Ofertas</a></li>
+                    <li><a href="buscarempresas.php">Buscar empresas</a></li>
+                    <li><a href="ofertasexternas.php">Ofertas externas</a></li>
+                </div>
+                <li><a href="misopiniones.php">Mis opiniones</a></li>
+                <li><a href="cv.php">MI CV</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="cerrarsesion.php">Cerrar sesión</a></li>
+            </ul>
+        </div>';
             }
         ?>
     </header>
@@ -87,7 +111,7 @@
                     <label for='CIF'>CIF</label><br>
                     <input type='text' name='CIF' value='$cif' required pattern='^([ABCDFGHJKLMNPQRSUVWabcdfghlmnpqrsuvw])([0-9]{7})([0-9A-Ja]$' maxlength='9'><br>
                     <label for='telefono'>Teléfono de contacto</label><br>
-                    <input type='tel' name='telefono' value='$telefono' required maxlength='9'><br>
+                    <input type='tel' name='telefono' value='$telefono' required maxlength='9' pattern='[0-9]{9}'><br>
                     <label for='informacion'>Información adicional</label><br>
                     <textarea name='informacion' rows='5'>$informacion</textarea><br>
                     <label for='email'>Correo electrónico</label><br>
@@ -109,13 +133,13 @@
                     <label for='apellido2'>Segundo apellido:</label><br>
                     <input type='text' name='apellido2' value='$apellido2' required><br>
                     <label for='NIF'>NIF</label><br>
-                    <input type='text' name='nif' value='$nif' pattern='(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))' maxlength='9' required disabled><br>
+                    <input type='text' name='nif' value='$nif' pattern='(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))' maxlength='9' required><br>
                     <label for='telefono'>Teléfono de contacto</label><br>
-                    <input type='tel' name='telefono' value='$telefono' required maxlength='9'><br>
+                    <input type='tel' name='telefono' value='$telefono' required maxlength='9' pattern='[0-9]{9}'><br>
                     <label for='email'>Correo electrónico</label><br>
                     <input type='email' name='email' value='$email' required disabled><br>
                     <label for='pass'>Contraseña</label><br>
-                    <input type='password' name='pass' required><br>
+                    <input type='password' name='pass' required aria><br>
                     <input type='hidden' name='id_candidato' value='$id_candidato'>
                     <button type='submit'>Modificar datos</button>
                 </form>";
@@ -129,3 +153,5 @@
     </footer>
 </body>
 </html>
+<script src="js/jQuery.js"></script>
+<script src="js/comun.js"></script>

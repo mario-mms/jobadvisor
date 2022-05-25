@@ -67,7 +67,7 @@ $(function (){
             peticion.done(function (data){
                 let respuesta=data.correcto;
                 if (respuesta=="empresa"){
-                    location="misofertas.php";
+                    location="candidatos.php";
                 }
                 else{
                     $("#aviso2").text("Credenciales incorrectas");
@@ -77,6 +77,18 @@ $(function (){
     });
     $("#email,#email2,#pass,#pass2,#email3,#email4").on("mousedown",function (e){
         $("#aviso,#aviso2,#aviso3,#aviso4").text("");
+    });
+    //EVITAR INYECCIÓN
+    $("#registrocandidatos").on("click",function(e){
+        e.preventDefault();
+        let telefono=$("#telefonocand").val();
+        let email=$("#email3").val();
+        let nif=$("#nif").val();
+        let pass=$("#pass").val();
+        if (telefono.match(/^[0-9]{9}$/)) {
+            alert("Bien");
+        }
+        else {alert("ZURULLOOO");}
     });
 
     $("#registrocandidatos").on("click",function (e) {
@@ -108,7 +120,6 @@ $(function (){
             });
             peticion.done(function (data){
                 let respuesta=data.existe;
-                console.log(respuesta);
                 if (respuesta=="si"){
                     $("#aviso3").text("El correo ya está registrado");
                 }
@@ -150,10 +161,12 @@ $(function (){
                     $("#aviso4").text("El correo ya está dado de alta");
                 }
                 else{
-                    location="misofertas.php";
+                    location="candidatos.php";
                 }
             });
         }
     });
+
+
 
 });

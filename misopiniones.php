@@ -26,14 +26,26 @@
 </head>
 <body>
     <header>
-        <a href="index.php"><img src="img/logopeq.png" alt="logo"></a>
+        <a href="index.php"><img id="logo" src="img/logopeq.png" alt="logo"></a>
         <div id="enlaces">
             <a href="ofertas.php">Buscar Ofertas</a>
-            <a href="misopiniones.php">Mis opiniones</a>
             <a href="buscarempresas.php">Buscar empresas</a>
-            <a href="cv.php">MI CV</a>
-            <a href="perfil.php">Perfil</a>
-            <a href="cerrarsesion.php">Cerrar sesión</a>
+            <a href="ofertasexternas.php">Ofertas externas</a>
+        </div>
+        <img id="menu" src="img/person.svg" alt="menu">
+        <img id="menu2" src="img/menu.svg" alt="menu2">
+        <div id="desplegable">
+            <ul>
+                <div id="oculto">
+                    <li><a href="ofertas.php">Buscar Ofertas</a></li>
+                    <li><a href="buscarempresas.php">Buscar empresas</a></li>
+                    <li><a href="ofertasexternas.php">Ofertas externas</a></li>
+                </div>
+                <li><a href="misopiniones.php">Mis opiniones</a></li>
+                <li><a href="cv.php">MI CV</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="cerrarsesion.php">Cerrar sesión</a></li>
+            </ul>
         </div>
     </header>
     <main>
@@ -62,6 +74,9 @@
                         echo "<p>$resultado2[respuesta]</p>";
                         echo "</div>";
                     }
+                    else{
+                        echo "</div>";
+                    }
                     $resultado=$consulta->fetch_assoc();
                 }
             }
@@ -74,3 +89,5 @@
     </footer>
 </body>
 </html>
+<script src="js/jQuery.js"></script>
+<script src="js/comun.js"></script>

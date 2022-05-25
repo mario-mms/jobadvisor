@@ -4,12 +4,12 @@ session_start();
 
     $cif=$_SESSION['cif'];
 
-    $titulo=$_POST['titulo'];
-    $salario=$_POST['salario'];
-    $duracion=$_POST['duracion'];
-    $descripcion=$_POST['descripcion'];
+    $titulo=filter_var($_POST['titulo'],FILTER_SANITIZE_STRING);
+    $salario=filter_var($_POST['salario'],FILTER_SANITIZE_STRING);
+    $duracion=filter_var($_POST['duracion'],FILTER_SANITIZE_STRING);
+    $descripcion=filter_var(nl2br($_POST['descripcion']),FILTER_SANITIZE_STRING);
     $provincia=$_POST['provincia'];
-    $horario=$_POST['horario'];
+    $horario=filter_var($_POST['horario'],FILTER_SANITIZE_STRING);
     $id_oferta=$_POST['id_oferta'];
 
     $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
