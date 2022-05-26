@@ -64,8 +64,8 @@
                 <input type="text" name="apellido1" id="apellido1" required autocapitalize="sentences"><br>
                 <label for="apellido2">Segundo Apellido</label><br>
                 <input type="text" name="apellido2" id="apellido2" required autocapitalize="sentences"><br>
-                <label for="nif">NIF</label><br>
-                <input type="text" name="nif" id="nif" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))" maxlength="9"><br>
+                <label for="nif">NIF/NIE</label><br>
+                <input type="text" name="nif" id="nif" required maxlength="9"><br>
                 <label for="telefono">Teléfono de contacto</label><br>
                 <input type="tel" name="telefono" id="telefonocand" required maxlength="9" pattern="[0-9]{9}"><br>
                 <label for="email">Correo electrónico</label><br>
@@ -95,7 +95,7 @@
                 <h3>Publica ofertas</h3>
                 <p>Anuncia tus ofertas de empleo para que los candidatos puedan contactar contigo</p>
                 <h3>Busca candidatos</h3>
-                <p>Podrás encontrar los candidatos que más te interen</p>
+                <p>Podrás encontrar los candidatos que más te interesen</p>
                 <button type="submit" id="daralta">Darse de alta</button>
             </div>
         </section>
@@ -106,9 +106,9 @@
                 <label for="nombre">Nombre de la empresa</label><br>
                 <input type="text" name="nombre" id="nombreemp" required autocapitalize="sentences"><br>
                 <label for="cif">CIF</label><br>
-                <input type="text" name="cif" id="cif" required pattern='^([ABCDFGHJKLMNPQRSUVWabcdfghlmnpqrsuvw])([0-9]{7})([0-9A-Ja]$' maxlength='9'><br>
+                <input type="text" name="cif" id="cif" required maxlength='9'><br>
                 <label for="telefono">Teléfono de contacto</label><br>
-                <input type="tel" name="telefono" id="telefonoemp" required maxlength="9" pattern="[0-9]{9}"><br>
+                <input type="tel" name="telefono" id="telefonoemp" required maxlength="9""><br>
                 <label for="informacion">Información adicional</label><br>
                 <textarea name="informacion" id="informacion" rows="4"></textarea><br>
                 <label for="email">Correo electrónico</label><br>
@@ -128,3 +128,4 @@
 </html>
 <script src="js/jQuery.js"></script>
 <script src="js/index.js"></script>
+<script src="js/comun.js"></script>

@@ -56,7 +56,7 @@
         <section id="buscador">
             <form action="buscarempresas.php" method="post">
                 <label for="empresa">Empresa</label>
-                <input type="text" name="nombre">
+                <input type="search" name="nombre">
                 <button type="submit">Buscar</button>
             </form>
         </section>

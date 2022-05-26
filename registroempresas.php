@@ -35,7 +35,7 @@
         $nombre=filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
         $cif=filter_var($_POST['cif'],FILTER_SANITIZE_STRING);
         $telefono=$_POST['telefono'];
-        $informacion=filter_var(nl2br($_POST['nombre']),FILTER_SANITIZE_STRING);
+        $informacion=nl2br($_POST['informacion']);
         $pass=$_POST['pass'];
         $passhash=password_hash($pass,PASSWORD_DEFAULT);
         $id_empresa=$_POST['id_empresa'];

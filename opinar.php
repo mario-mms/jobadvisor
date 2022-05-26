@@ -17,12 +17,13 @@
         $consulta00=$mysql->query("SELECT * FROM empresas WHERE id_empresa='$id_empresa'");
         $resultado00=$consulta00->fetch_assoc();
         $nombre=$resultado00["nombre"];
+        $informacion=$resultado00["informacion"];
 
         $consulta=$mysql->query("SELECT * FROM opiniones LEFT JOIN respuestas USING (id_opinion) WHERE id_empresa='$id_empresa'");
         $resultado=$consulta->fetch_assoc();
 
         if (isset($_POST['opinion'])){
-            $opinion=filter_var(nl2br($_POST['opinion']),FILTER_SANITIZE_STRING);
+            $opinion=nl2br($_POST['opinion']);
             $puesto=filter_var($_POST['puesto'],FILTER_SANITIZE_STRING);
             $inicio_contrato=$_POST['inicio_contrato'];
             $fin_contrato=$_POST['fin_contrato'];
@@ -76,10 +77,11 @@
         <section id="opinar">
             <?php
                 echo "<h1>Empresa: $nombre</h1>";
+                echo "<p>$informacion</p>";
             ?>
             <h3>Tú opinión puede ser útil para el resto de candidatos</h3>
             <form action="opinar.php" method="post">
-                <label for="puesto">Puesto desempeñado</label><br>
+                <label for="puesto">Puesto desempeñado/negociado</label><br>
                 <input type="text" name="puesto" required><br>
                 <label for="opinion">Opinión</label><br>
                 <textarea name="opinion" rows="5" required></textarea><br>

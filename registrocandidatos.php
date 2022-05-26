@@ -45,6 +45,7 @@
         $id_candidato=$_POST['id_candidato'];
 
         $_SESSION['pass']=$passhash;
+        $_SESSION['nif']=$nif;
 
         $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
         $consulta1=$mysql->query("UPDATE candidatos SET nombre='$nombre' WHERE id_candidato='$id_candidato'");

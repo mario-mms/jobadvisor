@@ -10,15 +10,15 @@
         $resultado=$consulta->fetch_assoc();
         $id_candidato=$resultado["id_candidato"];
 
-        $consulta2=$mysql->query("SELECT id_cv,fecha_actual,experiencia,titulacion,masinfo FROM cv c JOIN experiencia e USING (id_cv) 
+        $consulta2=$mysql->query("SELECT id_cv,fecha_actual, experiencia,titulacion,masinfo FROM cv c JOIN experiencia e USING (id_cv) 
                                             JOIN titulacion t USING (id_cv) JOIN masinfo m USING (id_cv) WHERE id_candidato='$id_candidato'");
         $resultado2=$consulta2->fetch_assoc();
 
         $id_cv=$resultado2['id_cv'];
         $fecha_actual=$resultado2['fecha_actual'];
-        $experiencia=$resultado2['experiencia'];
-        $titulacion=$resultado2['titulacion'];
-        $masinfo=$resultado2['masinfo'];
+        $experiencia=filter_var($resultado2['experiencia'],FILTER_SANITIZE_STRING);
+        $titulacion=filter_var($resultado2['titulacion'],FILTER_SANITIZE_STRING);
+        $masinfo=filter_var($resultado2['masinfo'],FILTER_SANITIZE_STRING);
 
         $consulta->close();
         $consulta2->close();

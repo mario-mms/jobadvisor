@@ -2,7 +2,7 @@
     session_start();
     if (isset($_SESSION["email"]) && isset($_SESSION["pass"]) && isset($_SESSION["nif"])){
         if (isset($_POST['provincia']) && isset($_POST['oferta'])){
-            if ($_POST['provincia']=='all' && $_POST['oferta']!==""){
+            if ($_POST['provincia']=='' && $_POST['oferta']!==""){
                 $oferta=$_POST['oferta'];
                 $provincia=$_POST['provincia'];
 
@@ -10,7 +10,7 @@
                 $consulta=$mysql->query("SELECT * FROM ofertas JOIN empresas USING (id_empresa) WHERE titulo like '%$oferta%'");
                 $resultado=$consulta->fetch_assoc();
             }
-            else if ($_POST['oferta']=='' && $_POST['provincia']!=="all"){
+            else if ($_POST['oferta']=='' && $_POST['provincia']!==""){
                 $oferta=$_POST['oferta'];
                 $provincia=$_POST['provincia'];
 
@@ -18,7 +18,7 @@
                 $consulta=$mysql->query("SELECT * FROM ofertas JOIN empresas USING (id_empresa) WHERE provincia = '$provincia'");
                 $resultado=$consulta->fetch_assoc();
             }
-            else if($_POST['provincia']!=="all" && $_POST['oferta']!==""){
+            else if($_POST['provincia']!=="" && $_POST['oferta']!==""){
                 $provincia=$_POST['provincia'];
                 $oferta=$_POST['oferta'];
                 $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
@@ -87,7 +87,7 @@
         <section id="buscador">
             <form action="ofertas.php" method="post">
                 <label for="oferta">Buscar ofertas de...</label>
-                <input type="text" name="oferta" id="oferta" value="<?=$oferta?>">
+                <input type="search" name="oferta" id="oferta" value="<?=$oferta?>">
                 <label for="provincia">Provincia</label>
                 <select name="provincia" id="provincia" >
                     <option value="">Cargando...</option>

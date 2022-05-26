@@ -59,9 +59,9 @@
                     echo "<div>";
                     echo "<h2>$resultado[empresa]</h2>";
                     echo "<p>Fecha de publicación: $resultado[publicado]</p>";
-                    echo "<p>Opinión:</p>";
+                    echo "<h3>Puesto: $resultado[puesto]</h3>";
+                    echo "<h4>Opinión:</h4>";
                     echo "<p>$resultado[opinion]</p>";
-                    echo "<p>Puesto: $resultado[puesto]</p>";
                     echo "<p>Inicio del contrato: $resultado[inicio_contrato]</p>";
                     echo "<p>Fin del contrato: $resultado[fin_contrato]</p>";
                     echo "<p><a href='borrar.php?id_opinion=$resultado[id_opinion]'>Borrar opinión</a></p>";

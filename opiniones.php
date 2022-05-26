@@ -9,12 +9,13 @@
         $resultado=$consulta->fetch_assoc();
 
         if (isset($_POST['cabecera']) && isset($_POST['respuesta']) && isset($_POST['id_opinion'])){
-            $cabecera=$_POST['cabecera'];
-            $respuesta=$_POST['respuesta'];
+            $cabecera=filter_var($_POST['cabecera'],FILTER_SANITIZE_STRING);
+            $respuesta=nl2br($_POST['respuesta']);
             $id_opinion=$_POST['id_opinion'];
             $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
             $consulta3=$mysql->query("INSERT INTO respuestas (id_opinion,cabecera,respuesta) 
                                             VALUES ('$id_opinion','$cabecera','$respuesta')");
+            header("Location:opiniones.php");
         }
     }
     else{
@@ -65,9 +66,9 @@
             else{
                 while($resultado){
                     echo "<div>";
-                    echo "<p>Puesto: $resultado[puesto]</p>";
                     echo "<p>Fecha de publicación: $resultado[fecha_actual]</p>";
-                    echo "<p>Opinión:</p>";
+                    echo "<h3>Puesto: $resultado[puesto]</h3>";
+                    echo "<h4>Opinión:</h4>";
                     echo "<p>$resultado[opinion]</p>";
                     echo "<p>Inicio del contrato: $resultado[inicio_contrato]</p>";
                     echo "<p>Fin del contrato: $resultado[fin_contrato]</p>";
@@ -77,9 +78,9 @@
                     if ($mysql->affected_rows==0){
                         echo "<form action='opiniones.php' method='post'>";
                         echo "<label for='cabecera'>Cabecera:</label><br>";
-                        echo "<input type='text' name='cabecera' required><br>";
+                        echo '<input type="text" name="cabecera" required pattern="[^<>]" title="No caracteres especiales"><br>';
                         echo "<label for='respuesta'>Respuesta:</label><br>";
-                        echo "<textarea name='respuesta' rows='8' required></textarea><br>";
+                        echo '<textarea name="respuesta" rows="8" required></textarea><br>';
                         echo "<input type='hidden' name='id_opinion' value='$resultado[id_opinion]'> ";
                         echo "<button type='submit'>Responder</button>";
                         echo "</form>";

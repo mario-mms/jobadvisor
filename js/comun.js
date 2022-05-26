@@ -5,7 +5,7 @@ $(function (){
         "dataType":"json"
     });
     peticion.done(function (data){
-        $("#provincia").html("<option value='all' selected>Selecciona la provincia</option>");
+        $("#provincia").html("<option value='' selected>Selecciona la provincia</option>");
         for (let provincias of data.records){
             let provincia=provincias.fields.texto;
             $("#provincia").append(`<option value="${provincia}">${provincia}</option>`);
@@ -17,4 +17,12 @@ $(function (){
     $("main,footer").on("click",function (e){
         $("#desplegable").hide(100);
     })
+    //Prohibir copiar, pegar y cortar
+    $('body').bind('cut copy paste', function(event) {
+        event.preventDefault();
+    });
+
+    $("input,textarea").on("keypress",function (e){
+        if (e.charCode==60 || e.charCode==61 || e.charCode==62) return false;
+    });
 });

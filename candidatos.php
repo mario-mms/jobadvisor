@@ -2,7 +2,7 @@
     session_start();
     if (isset($_SESSION['email']) && isset($_SESSION['pass']) && isset($_SESSION['cif'])){
         if (isset($_POST['provincia']) && isset($_POST['experiencia'])){
-            if ($_POST['provincia']=="all" && $_POST['experiencia']!==''){
+            if ($_POST['provincia']=="" && $_POST['experiencia']!==''){
                 $provincia=$_POST['provincia'];
                 $experiencia=$_POST['experiencia'];
                 $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
@@ -11,7 +11,7 @@
                 //AND MATCH(experiencia) AGAINST ('$experiencia')");
                 $resultado=$consulta->fetch_assoc();
             }
-            else if ($_POST['experiencia']=='' && $_POST['provincia']!=="all"){
+            else if ($_POST['experiencia']=='' && $_POST['provincia']!==""){
                 $provincia=$_POST['provincia'];
                 $experiencia=$_POST['experiencia'];
                 $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
@@ -19,7 +19,7 @@
                                     JOIN titulacion USING (id_cv) JOIN masinfo USING (id_cv) WHERE provincia = '$provincia'");
                 $resultado=$consulta->fetch_assoc();
             }
-            else if($_POST['provincia']!=="all" && $_POST['experiencia']!==""){
+            else if($_POST['provincia']!=="" && $_POST['experiencia']!==""){
                 $provincia=$_POST['provincia'];
                 $experiencia=$_POST['experiencia'];
                 $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
@@ -89,7 +89,7 @@
         <section id="buscador">
             <form action="candidatos.php" method="post">
                 <label for="oferta">¿Qué experiencia debe tener?</label>
-                <input type="text" name="experiencia" value="<?=$experiencia?>">
+                <input type="search" name="experiencia" value="<?=$experiencia?>">
                 <label for="provincia">Provincia</label>
                 <select name="provincia" id="provincia">
                     <option value="">Cargando...</option>
@@ -106,9 +106,12 @@
                     echo "<p>Teléfono: <a href='tel:$resultado[telefono]'>$resultado[telefono]</a></p>";
                     echo "<p>Correo electrónico: <a href='mailto:$resultado[email]'>$resultado[email]</a></p>";
                     echo "<p>Provincia: $resultado[provincia]</p>";
-                    echo "<p>Titulación: $resultado[titulacion]</p>";
-                    echo "<p>Experiencia: $resultado[experiencia]</p>";
-                    echo "<p>Más información: $resultado[masinfo]</p>";
+                    echo "<h4>Titulación</h4>";
+                    echo "<p>$resultado[titulacion]</p>";
+                    echo "<h4>Experiencia</h4>";
+                    echo "<p>$resultado[experiencia]</p>";
+                    echo "<h4>Más información</h4>";
+                    echo "<p>$resultado[masinfo]</p>";
                     echo "</div>";
 
                     $resultado=$consulta->fetch_assoc();

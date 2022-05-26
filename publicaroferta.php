@@ -7,7 +7,7 @@ session_start();
     $titulo=filter_var($_POST['titulo'],FILTER_SANITIZE_STRING);
     $salario=filter_var($_POST['salario'],FILTER_SANITIZE_STRING);
     $duracion=filter_var($_POST['duracion'],FILTER_SANITIZE_STRING);
-    $descripcion=filter_var(nl2br($_POST['descripcion']),FILTER_SANITIZE_STRING);
+    $descripcion=nl2br($_POST['descripcion']);
     $provincia=$_POST['provincia'];
     $horario=filter_var($_POST['horario'],FILTER_SANITIZE_STRING);
     $id_oferta=$_POST['id_oferta'];

@@ -11,7 +11,7 @@
         $horario=$resultado["horario"];
         $duracion=$resultado["duracion"];
         $salario=$resultado["salario"];
-        $descripcion=$resultado["descripcion"];
+        $descripcion=filter_var($resultado['descripcion'],FILTER_SANITIZE_STRING);
     }
     else{
         header("Location:index.php");
@@ -52,20 +52,20 @@
         </div>
     </header>
     <main>
-        <h1>Publica tu oferta</h1>
+        <h1>Publica tus ofertas</h1>
         <section id="publicar">
             <form action="publicaroferta.php" method="post">
-                <label for="titulo">Puesto que buscas</label><br>
-                <input type="text" name="titulo" id="titulo" required value="<?=$titulo?>"><br>
+                <label for="titulo">Puesto que buscas*</label><br>
+                <input type="text" name="titulo" id="titulo" required value="<?=$titulo?>" pattern="[A-Za-z/.,]+" title="No números"><br>
                 <label for="horario">Horario</label><br>
-                <input type="text" name="horario" id="horario" value="<?=$horario?>"><br>
+                <input type="text" name="horario" id="horario" value="<?=$horario?>" pattern='[^<>"]+' title="No caracteres especiales"><br>
                 <label for="salario">Salario</label><br>
-                <input type="text" name="salario" id="salario" value="<?=$salario?>"><br>
+                <input type="text" name="salario" id="salario" value="<?=$salario?>" pattern='[^<>"]+' title="No caracteres especiales"><br>
                 <label for="duracion">Duración del contrato</label><br>
-                <input type="text" name="duracion" id="duracion" value="<?=$duracion?>"><br>
+                <input type="text" name="duracion" id="duracion" value="<?=$duracion?>" pattern='[^<>"]+' title="No caracteres especiales"><br>
                 <label for="descripcion">Descripción del puesto</label><br>
                 <textarea name="descripcion" id="descripcion" cols="30" rows="10"><?=$descripcion?></textarea><br>
-                <label for="provincia">Provincia</label><br>
+                <label for="provincia">Provincia*</label><br>
                 <select name="provincia" id="provincia" required>
                     <option value="">Cargando...</option>
                 </select><br>

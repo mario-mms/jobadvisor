@@ -75,20 +75,8 @@ $(function (){
             })
         }
     });
-    $("#email,#email2,#pass,#pass2,#email3,#email4").on("mousedown",function (e){
+    $("input,textarea").on("focus",function (e){
         $("#aviso,#aviso2,#aviso3,#aviso4").text("");
-    });
-    //EVITAR INYECCIÓN
-    $("#registrocandidatos").on("click",function(e){
-        e.preventDefault();
-        let telefono=$("#telefonocand").val();
-        let email=$("#email3").val();
-        let nif=$("#nif").val();
-        let pass=$("#pass").val();
-        if (telefono.match(/^[0-9]{9}$/)) {
-            alert("Bien");
-        }
-        else {alert("ZURULLOOO");}
     });
 
     $("#registrocandidatos").on("click",function (e) {
@@ -101,8 +89,20 @@ $(function (){
         let nif = $("#nif").val();
         let telefonocand = $("#telefonocand").val();
 
-        if (email3=="" || pass3=="" || nombrecand=="" || apellido1=="" || apellido2=="" || nif=="" || telefonocand==""){
-            alert("Rellena todos los campos del formulario")
+        if (!nif.match(/^([0-9]{8}[A-Z])|[XYZ][0-9]{7}[A-Z]$/)) {
+            $("#aviso3").text("Introduce un NIF/NIE correcto");
+        }
+        else if (!telefonocand.match(/^[0-9]{9}$/)) {
+            $("#aviso3").text("Introduce un teléfono correcto");
+        }
+        else if (!email3.match(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/)){
+            $("#aviso3").text("Introduce un correo correcto");
+        }
+        else if (!pass3.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&-_])([A-Za-z\d$@$!%*?&-_]|[^ ]){8,15}$/)){
+            $("#aviso3").text("La contraseña debe tener al menos una letra mayúscula, una minúscula, un número, un caracter especial y 8 de longitud mínima");
+        }
+        else if (email3=="" || pass3=="" || nombrecand=="" || apellido1=="" || apellido2=="" || nif=="" || telefonocand==""){
+            $("#aviso3").text("Rellena todos los campos del formulario");
         }
         else{
             let peticion = $.ajax({
@@ -139,8 +139,20 @@ $(function (){
         let cif = $("#cif").val();
         let telefonoemp = $("#telefonoemp").val();
 
-        if (email4=="" || pass4=="" || nombreemp=="" || informacion=="" || cif=="" || telefonoemp==""){
-            alert("Rellena todos los campos del formulario")
+        if (!cif.match(/^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$/)) {
+            $("#aviso4").text("Introduce un CIF correcto");
+        }
+        else if (!telefonoemp.match(/^[0-9]{9}$/)) {
+            $("#aviso4").text("Introduce un teléfono correcto");
+        }
+        else if (!email4.match(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/)){
+            $("#aviso4").text("Introduce un correo correcto");
+        }
+        else if (!pass4.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&-_])([A-Za-z\d$@$!%*?&-_]|[^ ]){8,15}$/)){
+            $("#aviso4").text("La contraseña debe tener al menos una letra mayúscula, una minúscula, un número, un caracter especial y 8 de longitud mínima");
+        }
+        else if (email4=="" || pass4=="" || nombreemp=="" || cif=="" || telefonoemp==""){
+            $("#aviso4").text("Rellena todos los campos del formulario");
         }
         else{
             let peticion = $.ajax({

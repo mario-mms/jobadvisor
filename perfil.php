@@ -12,7 +12,7 @@
         $nombre=$resultado["nombre"];
         $cif=$resultado["cif"];
         $telefono=$resultado["telefono"];
-        $informacion=$resultado["informacion"];
+        $informacion=filter_var($resultado['informacion'],FILTER_SANITIZE_STRING);;
         $email=$resultado["email"];
         $pass=$resultado["password"];
         $id_empresa=$resultado["id_empresa"];
@@ -107,17 +107,19 @@
                 <h3>Los siguientes campos son obligatorios</h3>
                 <form action='registroempresas.php' method='post'>
                     <label for='nombre'>Nombre de la empresa</label><br>
-                    <input type='text' name='nombre' value='$nombre' required><br>
+                    <input type='text' name='nombre' value='$nombre' required ><br>
                     <label for='CIF'>CIF</label><br>
-                    <input type='text' name='CIF' value='$cif' required pattern='^([ABCDFGHJKLMNPQRSUVWabcdfghlmnpqrsuvw])([0-9]{7})([0-9A-Ja]$' maxlength='9'><br>
+                    <input type='text' name='CIF' value='$cif' required pattern='^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$' maxlength='9'><br>
                     <label for='telefono'>Teléfono de contacto</label><br>
-                    <input type='tel' name='telefono' value='$telefono' required maxlength='9' pattern='[0-9]{9}'><br>
+                    <input type='tel' name='telefono' value='$telefono' required maxlength='9' pattern='^[0-9]{9}$'><br>
                     <label for='informacion'>Información adicional</label><br>
                     <textarea name='informacion' rows='5'>$informacion</textarea><br>
                     <label for='email'>Correo electrónico</label><br>
                     <input type='email' name='email' value='$email' required disabled><br>
                     <label for='pass'>Contraseña</label><br>
-                    <input type='password' name='pass' required><br>
+                    <input type='password' name='pass' required 
+                    pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&-_])([A-Za-z\d$@$!%*?&-_]|[^ ]){8,15}$'
+                    title='La contraseña debe tener al menos una letra mayúscula, una minúscula, un número, un caracter especial y 8 de longitud mínima'><br>
                     <input type='hidden' name='id_empresa' value='$id_empresa'>
                     <button type='submit'>Modificar datos</button>
                 </form>";
@@ -127,19 +129,21 @@
                 <h3>Los siguientes campos son obligatorios</h3>
                     <form action='registrocandidatos.php' method='post'>
                     <label for='nombre'>Nombre:</label><br>
-                    <input type='text' name='nombre' value='$nombre' required><br>
+                    <input type='text' name='nombre' value='$nombre' required pattern='[A-Za-z]+' title='Sólo letras'><br>
                     <label for='apellido1'>Primer apellido:</label><br>
-                    <input type='text' name='apellido1' value='$apellido1' required><br>
+                    <input type='text' name='apellido1' value='$apellido1' required pattern='[A-Za-z]+' title='Sólo letras'><br>
                     <label for='apellido2'>Segundo apellido:</label><br>
-                    <input type='text' name='apellido2' value='$apellido2' required><br>
-                    <label for='NIF'>NIF</label><br>
-                    <input type='text' name='nif' value='$nif' pattern='(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))' maxlength='9' required><br>
+                    <input type='text' name='apellido2' value='$apellido2' required pattern='[A-Za-z]+' title='Sólo letras'><br>
+                    <label for='NIF'>NIF/NIE</label><br>
+                    <input type='text' name='nif' value='$nif' pattern='^([0-9]{8}[A-Z])|[XYZ][0-9]{7}[A-Z]$' maxlength='9' required><br>
                     <label for='telefono'>Teléfono de contacto</label><br>
-                    <input type='tel' name='telefono' value='$telefono' required maxlength='9' pattern='[0-9]{9}'><br>
+                    <input type='tel' name='telefono' value='$telefono' required maxlength='9' pattern='^[0-9]{9}$'><br>
                     <label for='email'>Correo electrónico</label><br>
                     <input type='email' name='email' value='$email' required disabled><br>
                     <label for='pass'>Contraseña</label><br>
-                    <input type='password' name='pass' required aria><br>
+                    <input type='password' name='pass' required 
+                    pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&-_])([A-Za-z\d$@$!%*?&-_]|[^ ]){8,15}$'
+                    title='La contraseña debe tener al menos una letra mayúscula, una minúscula, un número, un caracter especial y 8 de longitud mínima'><br>
                     <input type='hidden' name='id_candidato' value='$id_candidato'>
                     <button type='submit'>Modificar datos</button>
                 </form>";
