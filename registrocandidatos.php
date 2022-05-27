@@ -16,10 +16,14 @@
         $resultado0=$consulta0->fetch_assoc();
         $consulta1=$mysql->query("SELECT count(*) as registro FROM empresas WHERE email='$email'");
         $resultado1=$consulta1->fetch_assoc();
+        $consulta00=$mysql->query("SELECT count(*) as registro FROM candidatos WHERE nif='$nif'");
+        $resultado00=$consulta00->fetch_assoc();
         if ($resultado0["registro"]==1 OR $resultado1["registro"]==1){
             echo '{"existe":"si"}';
         }
-
+        else if($resultado00['registro']==1){
+            echo '{"existe":"nif"}';
+        }
         else{
             $consulta=$mysql->query("INSERT INTO candidatos (nombre,apellido1,apellido2,nif,telefono,email,password) 
                         VALUES ('$nombre','$apellido1','$apellido2','$nif','$telefono','$email','$passhash')");
@@ -39,17 +43,14 @@
         $apellido1=filter_var($_POST['apellido1'],FILTER_SANITIZE_STRING);
         $apellido2=filter_var($_POST['apellido2'],FILTER_SANITIZE_STRING);
         $telefono=$_POST['telefono'];
-        $nif=filter_var($_POST['nif'],FILTER_SANITIZE_STRING);
         $pass=$_POST['pass'];
         $passhash=password_hash($pass,PASSWORD_DEFAULT);
         $id_candidato=$_POST['id_candidato'];
 
         $_SESSION['pass']=$passhash;
-        $_SESSION['nif']=$nif;
 
         $mysql=new mysqli("localhost","jobadvisor","jobadvisor","jobadvisor");
         $consulta1=$mysql->query("UPDATE candidatos SET nombre='$nombre' WHERE id_candidato='$id_candidato'");
-        $consulta1=$mysql->query("UPDATE candidatos SET nif='$nif' WHERE id_candidato='$id_candidato'");
         $consulta1=$mysql->query("UPDATE candidatos SET apellido1='$apellido1' WHERE id_candidato='$id_candidato'");
         $consulta1=$mysql->query("UPDATE candidatos SET apellido2='$apellido2' WHERE id_candidato='$id_candidato'");
         $consulta3=$mysql->query("UPDATE candidatos SET telefono='$telefono' WHERE id_candidato='$id_candidato'");

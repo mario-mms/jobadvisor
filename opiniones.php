@@ -78,7 +78,7 @@
                     if ($mysql->affected_rows==0){
                         echo "<form action='opiniones.php' method='post'>";
                         echo "<label for='cabecera'>Cabecera:</label><br>";
-                        echo '<input type="text" name="cabecera" required pattern="[^<>]" title="No caracteres especiales"><br>';
+                        echo '<input type="text" name="cabecera" required pattern="[^<>]+" title="No caracteres especiales"><br>';
                         echo "<label for='respuesta'>Respuesta:</label><br>";
                         echo '<textarea name="respuesta" rows="8" required></textarea><br>';
                         echo "<input type='hidden' name='id_opinion' value='$resultado[id_opinion]'> ";

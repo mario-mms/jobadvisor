@@ -56,7 +56,7 @@
         <section id="publicar">
             <form action="publicaroferta.php" method="post">
                 <label for="titulo">Puesto que buscas*</label><br>
-                <input type="text" name="titulo" id="titulo" required value="<?=$titulo?>" pattern="[A-Za-z/.,]+" title="No números"><br>
+                <input type="text" name="titulo" id="titulo" required value="<?=$titulo?>" pattern='[^<>"]+' title="No caracteres especiales"><br>
                 <label for="horario">Horario</label><br>
                 <input type="text" name="horario" id="horario" value="<?=$horario?>" pattern='[^<>"]+' title="No caracteres especiales"><br>
                 <label for="salario">Salario</label><br>

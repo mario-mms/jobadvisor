@@ -1,24 +1,26 @@
 #accesos{
     text-align: center;
     position: relative;
-    top: calc(50% - 20%);
+    top: calc(50% - 25%);
     left: calc(50% - 25%);
     width: 50%;
-    height: 40%;
+    height: 50%;
 }
-#accesos #candidatos,#accesos #empresas{
+#candidatos,#empresas{
     padding: 1em;
     width: 100%;
-    height: 35px;
-    font-size: 1.5em;
+    font-size: 2em;
     border: 1px solid black;
     margin: 1em auto;
     border-radius: 10px;
     cursor: pointer;
     background-color: crimson;
 }
-#candidatos:hover,#empresas:hover{
-    background-color: blue;
+#candidatos:hover, #empresas:hover{
+    background-color: orangered;
+    transform: scale(1.2);
+    transition: 0.5s;
+    color: white;
 }
 #iniciocandidatos,#inicioempresas{
     display: none;
@@ -98,9 +100,9 @@
     font-size: 1.3em;
     cursor: pointer;
 }
-@media all and (max-width:768px){
+@media all and (max-width:1000px){
     #candidatos,#empresas{
-        font-size: 1.2em;
-        padding: 0px;
+        font-size: 1.3em;
+        padding: 0.5em;
     }
 }

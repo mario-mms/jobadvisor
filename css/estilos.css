@@ -78,7 +78,7 @@
     width: 60%;
     font-size: 1em;
 }
-#cv button,#datos button,#publicar button,#opinar button{
+#cv button,#datos button,#publicar button,#opinar button, #opiniones button{
     width: 25%;
     height: 40px;
     border: none;

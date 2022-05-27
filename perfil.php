@@ -108,8 +108,8 @@
                 <form action='registroempresas.php' method='post'>
                     <label for='nombre'>Nombre de la empresa</label><br>
                     <input type='text' name='nombre' value='$nombre' required ><br>
-                    <label for='CIF'>CIF</label><br>
-                    <input type='text' name='CIF' value='$cif' required pattern='^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$' maxlength='9'><br>
+                    <label for='cif'>CIF</label><br>
+                    <input type='text' name='cif' value='$cif' required pattern='^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$' maxlength='9' disabled><br>
                     <label for='telefono'>Teléfono de contacto</label><br>
                     <input type='tel' name='telefono' value='$telefono' required maxlength='9' pattern='^[0-9]{9}$'><br>
                     <label for='informacion'>Información adicional</label><br>
@@ -135,7 +135,7 @@
                     <label for='apellido2'>Segundo apellido:</label><br>
                     <input type='text' name='apellido2' value='$apellido2' required pattern='[A-Za-z]+' title='Sólo letras'><br>
                     <label for='NIF'>NIF/NIE</label><br>
-                    <input type='text' name='nif' value='$nif' pattern='^([0-9]{8}[A-Z])|[XYZ][0-9]{7}[A-Z]$' maxlength='9' required><br>
+                    <input type='text' name='nif' value='$nif' pattern='^([0-9]{8}[A-Z])|[XYZ][0-9]{7}[A-Z]$' maxlength='9' required disabled><br>
                     <label for='telefono'>Teléfono de contacto</label><br>
                     <input type='tel' name='telefono' value='$telefono' required maxlength='9' pattern='^[0-9]{9}$'><br>
                     <label for='email'>Correo electrónico</label><br>

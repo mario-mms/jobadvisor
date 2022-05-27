@@ -62,7 +62,8 @@
                         echo "<p>Horario: $resultado[horario]</p>";
                         echo "<p>Fecha de publicación: $resultado[fecha_actual]</p>";
                         echo "<p>Provincia: $resultado[provincia]</p>";
-                        echo "<p>Descripción: $resultado[descripcion]</p>";
+                        echo "<h4>Descripción:</h4>";
+                        echo "<p>$resultado[descripcion]</p>";
                         echo "<a href='publicar.php?id_oferta=$resultado[id_oferta]'>Editar</a><br>";
                         echo "<a href='borrar.php?id_oferta=$resultado[id_oferta]'>Borrar oferta</a>";
                         echo "</div>";

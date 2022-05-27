@@ -123,6 +123,9 @@ $(function (){
                 if (respuesta=="si"){
                     $("#aviso3").text("El correo ya está registrado");
                 }
+                else if(respuesta=="nif"){
+                    $("#aviso3").text("El NIF/NIE ya está registrado");
+                }
                 else{
                     location="cv.php";
                 }
@@ -171,6 +174,9 @@ $(function (){
                 let respuesta=data.existe;
                 if (respuesta=="si"){
                     $("#aviso4").text("El correo ya está dado de alta");
+                }
+                else if (respuesta=="cif"){
+                    $("#aviso4").text("El CIF ya está dado de alta");
                 }
                 else{
                     location="candidatos.php";
